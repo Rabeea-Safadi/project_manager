@@ -1,0 +1,83 @@
+<h2>Projects</h2>
+
+<form action="/add-project" method="get">
+    <input type="text" readonly name="auth" value="<%= auth; %>" style="display: none">
+    <button type="submit">Add Project</button>
+</form>
+
+<style>
+    th,
+    td {
+        padding: 5px 15px;
+        font-size: 18px;
+    }
+    
+    th {
+        background-color: azure;
+        color: black;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    tr:not(:last-of-type) {
+        border-bottom: 1px solid #000000aa;
+    }
+</style>
+
+<% if (projects.length > 0) { %>
+    <form id="projects-form">
+        <input type="text" readonly name="auth" value="<%= auth; %>" style="display: none">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Contact</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% for (let project of projects) { %>
+                    <tr>
+                        <td><%= project.Id; %></td>
+                        <td><%= project.Title; %></td>
+                        <td style="white-space: break-spaces; max-width: 500px"><%= project.Description; %></td>
+                        <td><%= project.Contact; %></td>
+                        <td><%= project.Location; %></td>
+                        <td><%= new Date(project.Date).toLocaleDateString(); %></td>
+                        <td>
+                            <button 
+                                class="del-btn"
+                                type="submit"
+                                formmethod="post"
+                                formaction="/delete-project/<%= project.Id %>"
+                            >
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </form>
+<% } else { %>
+    <h3>No Projects To Show...</h3>
+<% } %>
+
+<script>
+    document.querySelector('#projects-form').addEventListener('submit', (ev) => {
+        if (!confirm('Are You Sure\nYou Are About To Delete This Project')) ev.preventDefault();
+    });
+</script>

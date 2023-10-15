@@ -1,0 +1,102 @@
+<h2>Add Project</h2>
+
+<form action="/add-project" method="post">
+    <input type="text" readonly name="auth" value="<%= auth; %>" style="display: none">
+    <input type="text" readonly name="user" value="<%= auth.split(':')[0]; %>" style="display: none">
+    <input type="text" readonly name="pass" value="<%= auth.split(':')[1]; %>" style="display: none">
+    <div class="text-field">
+        <label for="id">Id</label>
+        <br>
+        <input 
+            autofocus
+            required 
+            minlength="1"
+            maxlength="50"
+            type="text" 
+            name="id" 
+            id="id"
+        >
+    </div>
+
+    <br>
+    
+    <div class="text-field">
+        <label for="title">Title</label>
+        <br>
+        <input
+            required
+            minlength="5"
+            maxlength="50" 
+            type="text" 
+            name="title" 
+            id="title"
+        >
+    </div>
+
+    <br>
+
+    <div class="text-field">
+        <label for="description">Description</label>
+        <br>
+        <textarea
+            required 
+            minlength="1"
+            maxlength="255"
+            rows="10"
+            cols="50"
+            type="text" 
+            name="description" 
+            id="description"
+        ></textarea>
+    </div>
+
+    <br>
+
+    <div class="text-field">
+        <label for="contact">Contact</label>
+        <br>
+        <input 
+            required 
+            minlength="1"
+            maxlength="50"
+            type="text" 
+            name="contact" 
+            id="contact"
+        >
+    </div>
+
+    <br>
+
+    <div class="text-field">
+        <label for="location">Location</label>
+        <br>
+        <input 
+            required 
+            minlength="1"
+            maxlength="50"
+            type="text" 
+            name="location" 
+            id="location"
+        >
+    </div>
+
+    <br>
+
+    <div class="text-field">
+        <label for="date">Date</label>
+        <br>
+        <input 
+            required 
+            type="date" 
+            name="date" 
+            id="date"
+        >
+    </div>
+
+    <br>
+
+    <div class="submit-field">
+        <button type="submit">Add Project</button>
+        <button type="submit" formmethod="post" formaction="/login" formnovalidate>Back To Projects</button>
+    </div>
+</form>

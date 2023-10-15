@@ -1,0 +1,1 @@
+INSERT INTO projects VALUES (?, ?, ?, ?, ?, ?);

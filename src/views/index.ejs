@@ -1,0 +1,27 @@
+<h2>Welcome To Your Projects Manger</h2>
+
+<% if (typeof error !== 'undefined') { %>
+<div class="error-message">
+    <%= error %>
+</div>
+<% } %>
+
+<form action="/login" method="post">
+    <div class="text-field">
+        <label for="username">Username</label>
+        <br>
+        <input type="text" name="user" id="username" autofocus>
+    </div>
+
+    <div class="text-field">
+        <label for="password">Password</label>
+        <br>
+        <input type="password" name="pass" id="password">
+    </div>
+
+    <br>
+
+    <div class="submit-field">
+        <button type="submit">Login</button>
+    </div>
+</form>
